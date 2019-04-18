@@ -3,7 +3,7 @@
 
 
 # goto-char-preview
-> Preview char when executing `goto-char` command.
+> Preview character when executing `goto-char` command.
 
 <p align="center">
   <img src="./screenshot/goto-char-preview-demo.gif" width="450" height="513"/>
@@ -23,6 +23,7 @@ M-x goto-char-preview
 Or you can bind it globally to replace `goto-char`:
 ```el
 (global-set-key [remap goto-char] 'goto-char-preview)
+```
 
 
 ## Contribution
