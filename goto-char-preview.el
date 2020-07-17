@@ -1,4 +1,4 @@
-;;; goto-char-preview.el --- Preview character when executing `goto-char` command.  -*- lexical-binding: t; -*-
+;;; goto-char-preview.el --- Preview character when executing `goto-char` command  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2019  Shen, Jen-Chieh
 ;; Created date 2019-04-18 16:03:46
@@ -32,20 +32,12 @@
 
 ;;; Code:
 
-
 (defgroup goto-char-preview nil
   "Preview char when executing `goto-char` command."
   :prefix "goto-char-preview-"
   :group 'convenience
   :group 'tools
   :link '(url-link :tag "Repository" "https://github.com/jcs090218/goto-char-preview"))
-
-
-(defvar goto-char-preview-prev-window nil
-  "Record down the previous window before we do `goto-char-preview' command.")
-
-(defvar goto-char-preview-prev-char-pos nil
-  "Record down the previous character position before we do `goto-char-preview' command.")
 
 (defcustom goto-char-preview-before-hook nil
   "Hooks run before `goto-char-preview' is run."
@@ -57,33 +49,33 @@
   :group 'goto-char-preview
   :type 'hook)
 
+(defvar goto-char-preview--prev-window nil
+  "Record down the previous window before we do `goto-char-preview' command.")
 
-(defun goto-char-preview-do-preview ()
+(defvar goto-char-preview--prev-char-pos nil
+  "Record down the previous character position before we do `goto-char-preview' command.")
+
+(defun goto-char-preview--do-preview ()
   "Do the goto char preview action."
   (save-selected-window
-    (when goto-char-preview-prev-window
+    (when goto-char-preview--prev-window
       (let ((char-pos-str (thing-at-point 'line)))
-
-        (select-window goto-char-preview-prev-window)
-
+        (select-window goto-char-preview--prev-window)
         (if char-pos-str
             (let ((char-pos (string-to-number char-pos-str)))
-              (when (<= char-pos 0)
-                (setq char-pos 1))
+              (when (<= char-pos 0) (setq char-pos 1))
+              (goto-char-preview--do char-pos))
+          (goto-char-preview--do goto-char-preview--prev-char-pos))))))
 
-              (goto-char-preview-do char-pos))
-          (goto-char-preview-do goto-char-preview-prev-char-pos))))))
-
-(defun goto-char-preview-do (char-pos)
+(defun goto-char-preview--do (char-pos)
   "Do goto char.
 CHAR-POS : Target character position to navigate to."
   (save-selected-window
-    (select-window goto-char-preview-prev-window)
+    (select-window goto-char-preview--prev-window)
     (goto-char (point-min))
     (when (< (point-max) char-pos)
       (setq char-pos (point-max)))
     (forward-char (1- char-pos))))
-
 
 ;;;###autoload
 (defun goto-char-preview ()
@@ -94,21 +86,19 @@ CHAR-POS : Target character position to navigate to."
         jumped)
     (run-hooks 'goto-char-preview-before-hook)
     (unwind-protect
-        (let ((goto-char-preview-prev-window (selected-window))
-              (goto-char-preview-prev-char-pos (point)))
+        (let ((goto-char-preview--prev-window (selected-window))
+              (goto-char-preview--prev-char-pos (point)))
           (setq jumped (read-number "Goto char: ")))
       (unless jumped
         (set-window-point window window-point))
       (run-hooks 'goto-char-preview-after-hook))))
 
-(defun goto-char-preview-minibuffer-setup ()
+(defun goto-char-preview--minibuffer-setup ()
   "Locally set up preview hooks for this minibuffer command."
   (when (memq this-command '(goto-char-preview))
-    (add-hook 'post-command-hook
-              #'goto-char-preview-do-preview nil t)))
+    (add-hook 'post-command-hook #'goto-char-preview--do-preview nil t)))
 
-(add-hook 'minibuffer-setup-hook 'goto-char-preview-minibuffer-setup)
-
+(add-hook 'minibuffer-setup-hook 'goto-char-preview--minibuffer-setup)
 
 (provide 'goto-char-preview)
 ;;; goto-char-preview.el ends here
