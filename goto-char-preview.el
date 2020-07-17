@@ -8,7 +8,7 @@
 ;; Keyword: character navigation
 ;; Version: 0.0.1
 ;; Package-Requires: ((emacs "24.3"))
-;; URL: https://github.com/jcs090218/goto-char-preview
+;; URL: https://github.com/jcs-elpa/goto-char-preview
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -37,7 +37,7 @@
   :prefix "goto-char-preview-"
   :group 'convenience
   :group 'tools
-  :link '(url-link :tag "Repository" "https://github.com/jcs090218/goto-char-preview"))
+  :link '(url-link :tag "Repository" "https://github.com/jcs-elpa/goto-char-preview"))
 
 (defcustom goto-char-preview-before-hook nil
   "Hooks run before `goto-char-preview' is run."
