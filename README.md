@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/jcs090218/goto-char-preview.svg?branch=master)](https://travis-ci.com/jcs090218/goto-char-preview)
+[![Build Status](https://travis-ci.com/jcs-elpa/goto-char-preview.svg?branch=master)](https://travis-ci.com/jcs-elpa/goto-char-preview)
 [![MELPA](https://melpa.org/packages/goto-char-preview-badge.svg)](https://melpa.org/#/goto-char-preview)
 [![MELPA Stable](https://stable.melpa.org/packages/goto-char-preview-badge.svg)](https://stable.melpa.org/#/goto-char-preview)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
