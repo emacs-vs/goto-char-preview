@@ -3,9 +3,9 @@ SHELL := /usr/bin/env bash
 EMACS ?= emacs
 CASK ?= cask
 
-PKG-FILES := fill-page.el
+PKG-FILES := goto-char-preview.el
 
-TEST-FILES := $(shell ls test/fill-page-*.el)
+TEST-FILES := $(shell ls test/goto-char-preview-*.el)
 
 .PHONY: clean checkdoc lint unix-build unix-compile	unix-test
 
