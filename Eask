@@ -1,6 +1,7 @@
 (package "goto-char-preview"
          "0.1.0"
          "Preview character when executing `goto-char` command")
+
 (package-file "goto-char-preview.el")
 
 (source "melpa")
