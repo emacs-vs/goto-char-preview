@@ -1,6 +1,6 @@
 ;;; goto-char-preview.el --- Preview character when executing `goto-char` command  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2019  Shen, Jen-Chieh
+;; Copyright (C) 2019-2022  Shen, Jen-Chieh
 ;; Created date 2019-04-18 16:03:46
 
 ;; Author: Shen, Jen-Chieh <jcs090218@gmail.com>
@@ -8,7 +8,7 @@
 ;; Keyword: character navigation
 ;; Version: 0.1.0
 ;; Package-Requires: ((emacs "24.3"))
-;; URL: https://github.com/jcs-elpa/goto-char-preview
+;; URL: https://github.com/emacs-vs/goto-char-preview
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -37,7 +37,7 @@
   :prefix "goto-char-preview-"
   :group 'convenience
   :group 'tools
-  :link '(url-link :tag "Repository" "https://github.com/jcs-elpa/goto-char-preview"))
+  :link '(url-link :tag "Repository" "https://github.com/emacs-vs/goto-char-preview"))
 
 (defcustom goto-char-preview-before-hook nil
   "Hooks run before `goto-char-preview' is run."
