@@ -5,7 +5,7 @@
 # goto-char-preview
 > Preview character when executing `goto-char` command.
 
-[![CI](https://github.com/jcs-elpa/goto-char-preview/actions/workflows/test.yml/badge.svg)](https://github.com/jcs-elpa/goto-char-preview/actions/workflows/test.yml)
+[![CI](https://github.com/emacs-vs/goto-char-preview/actions/workflows/test.yml/badge.svg)](https://github.com/emacs-vs/goto-char-preview/actions/workflows/test.yml)
 
 <p align="center">
   <img src="./etc/goto-char-preview-demo.gif" width="450" height="513"/>
