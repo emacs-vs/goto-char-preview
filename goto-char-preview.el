@@ -4,11 +4,10 @@
 ;; Created date 2019-04-18 16:03:46
 
 ;; Author: Shen, Jen-Chieh <jcs090218@gmail.com>
-;; Description: Preview character when executing `goto-char` command.
-;; Keyword: character navigation
+;; URL: https://github.com/emacs-vs/goto-char-preview
 ;; Version: 0.1.0
 ;; Package-Requires: ((emacs "24.3"))
-;; URL: https://github.com/emacs-vs/goto-char-preview
+;; Keywords: character navigation
 
 ;; This file is NOT part of GNU Emacs.
 
