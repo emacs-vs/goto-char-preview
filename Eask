@@ -3,7 +3,7 @@
          "Preview character when executing `goto-char` command")
 
 (website-url "https://github.com/emacs-vs/goto-char-preview")
-(keywords "character" "navigation")
+(keywords "convenience" "character" "navigation")
 
 (package-file "goto-char-preview.el")
 
