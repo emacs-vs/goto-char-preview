@@ -7,7 +7,7 @@
 ;; URL: https://github.com/emacs-vs/goto-char-preview
 ;; Version: 0.1.0
 ;; Package-Requires: ((emacs "24.3"))
-;; Keywords: character navigation
+;; Keywords: convenience character navigation
 
 ;; This file is NOT part of GNU Emacs.
 
