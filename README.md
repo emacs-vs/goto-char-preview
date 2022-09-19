@@ -15,7 +15,7 @@ Normally `goto-char` will just ask for input of the character position then once
 you hit `RET`; it will just go to that character position. This package makes this
 better by navigating the character position while you are inputting in minibuffer.
 
-## Usage
+## 🔧 Usage
 
 Call it from `minibuffer` directly,
 ```
