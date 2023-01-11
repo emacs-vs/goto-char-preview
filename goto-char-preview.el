@@ -91,9 +91,13 @@ CHAR-POS : Target character position to navigate to."
         jumped)
     (run-hooks 'goto-char-preview-before-hook)
     (unwind-protect
-        (setq jumped (read-number (if goto-char-preview--relative-p
-                                      "Goto char relative: "
-                                    "Goto char: ")))
+        (setq jumped (read-number
+                      (format (if goto-char-preview--relative-p
+                                  "[%d] Goto char relative: (%d to %d) "
+                                "[%d] Goto char: (%d to %d) ")
+                              goto-char-preview--prev-char-pos
+                              (point-min)
+                              (point-max))))
       (if jumped
           (with-current-buffer (window-buffer goto-char-preview--prev-window)
             (unless (region-active-p) (push-mark window-point)))
