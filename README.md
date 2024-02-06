@@ -1,4 +1,5 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![JCS-ELPA](https://raw.githubusercontent.com/jcs-emacs/badges/master/elpa/v/goto-char-preview.svg)](https://jcs-emacs.github.io/jcs-elpa/#/goto-char-preview)
 [![MELPA](https://melpa.org/packages/goto-char-preview-badge.svg)](https://melpa.org/#/goto-char-preview)
 [![MELPA Stable](https://stable.melpa.org/packages/goto-char-preview-badge.svg)](https://stable.melpa.org/#/goto-char-preview)
 
