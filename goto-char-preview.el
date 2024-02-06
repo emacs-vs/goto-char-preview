@@ -54,7 +54,7 @@
   :type 'integer)
 
 (defface goto-char-preview-hl
-  '((t :inherit highlight))
+  '((t :inherit highlight :extend t))
   "Face to use for highlighting when change preview char."
   :group 'goto-line-preview)
 
@@ -72,6 +72,7 @@
   (when goto-char-preview-hl-duration
     (let ((overlay (make-overlay (line-beginning-position) (line-end-position))))
       (overlay-put overlay 'face 'goto-char-preview-hl)
+      (overlay-put overlay 'window (selected-window))
       (sit-for goto-char-preview-hl-duration)
       (delete-overlay overlay))))
 
