@@ -48,6 +48,16 @@
   :group 'goto-char-preview
   :type 'hook)
 
+(defcustom goto-char-preview-hl-duration 1
+  "Duration of highlight when change preview char."
+  :group 'goto-char-preview
+  :type 'integer)
+
+(defface goto-char-preview-hl
+  '((t :inherit highlight))
+  "Face to use for highlighting when change preview char."
+  :group 'goto-line-preview)
+
 (defvar goto-char-preview--prev-window nil
   "Record down the previous window before we do preview command.")
 
@@ -57,6 +67,14 @@
 (defvar goto-char-preview--relative-p nil
   "Flag to see if this command relative.")
 
+(defun goto-char-preview--highlight ()
+  "Keep highlight for a fixed time."
+  (when goto-char-preview-hl-duration
+    (let ((overlay (make-overlay (line-beginning-position) (line-end-position))))
+      (overlay-put overlay 'face 'goto-char-preview-hl)
+      (sit-for goto-char-preview-hl-duration)
+      (delete-overlay overlay))))
+
 (defun goto-char-preview--do (char-pos)
   "Do goto char.
 CHAR-POS : Target character position to navigate to."
@@ -65,7 +83,8 @@ CHAR-POS : Target character position to navigate to."
     (goto-char (point-min))
     (when (< (point-max) char-pos)
       (setq char-pos (point-max)))
-    (forward-char (1- char-pos))))
+    (forward-char (1- char-pos))
+    (goto-char-preview--highlight)))
 
 (defun goto-char-preview--do-preview ()
   "Do the goto char preview action."

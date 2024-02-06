@@ -26,6 +26,16 @@ Or you can bind it globally to replace `goto-char`:
 (global-set-key [remap goto-char] 'goto-char-preview)
 ```
 
+### Change hightlight color or duration
+
+```el
+;; Highlight 1.5 seconds when change preview line
+(setq goto-char-preview-hl-duration 1.5)
+
+;; Change highlight background color to white
+(set-face-background 'goto-char-preview-hl "white")
+```
+
 ## 🛠️ Contribute
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
