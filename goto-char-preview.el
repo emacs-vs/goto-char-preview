@@ -70,7 +70,7 @@
 (defun goto-char-preview--highlight ()
   "Keep highlight for a fixed time."
   (when goto-char-preview-hl-duration
-    (let ((overlay (make-overlay (line-beginning-position) (line-end-position))))
+    (let ((overlay (make-overlay (line-beginning-position) (1+ (line-end-position)))))
       (overlay-put overlay 'face 'goto-char-preview-hl)
       (overlay-put overlay 'window (selected-window))
       (sit-for goto-char-preview-hl-duration)
