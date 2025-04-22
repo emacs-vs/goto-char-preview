@@ -1,3 +1,5 @@
+;; -*- mode: eask; lexical-binding: t -*-
+
 (package "goto-char-preview"
          "0.1.0"
          "Preview character when executing `goto-char` command")
