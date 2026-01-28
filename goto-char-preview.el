@@ -56,7 +56,7 @@
 (defface goto-char-preview-hl
   '((t :inherit highlight :extend t))
   "Face to use for highlighting when change preview char."
-  :group 'goto-line-preview)
+  :group 'goto-char-preview)
 
 (defvar goto-char-preview--prev-window nil
   "Record down the previous window before we do preview command.")
@@ -66,6 +66,9 @@
 
 (defvar goto-char-preview--relative-p nil
   "Flag to see if this command relative.")
+
+(defvar goto-char-preview--executing-p nil
+  "Set to t when the command is getting executed.")
 
 (defun goto-char-preview--highlight ()
   "Keep highlight for a fixed time."
@@ -89,8 +92,9 @@ CHAR-POS : Target character position to navigate to."
 
 (defun goto-char-preview--do-preview ()
   "Do the goto char preview action."
-  (save-selected-window
-    (when goto-char-preview--prev-window
+  (when (and goto-char-preview--executing-p
+             goto-char-preview--prev-window)
+    (save-selected-window
       (let ((char-pos-str (thing-at-point 'line)))
         (select-window goto-char-preview--prev-window)
         (if char-pos-str
@@ -105,7 +109,8 @@ CHAR-POS : Target character position to navigate to."
 (defun goto-char-preview ()
   "Preview goto char."
   (interactive)
-  (let ((goto-char-preview--prev-window (selected-window))
+  (let ((goto-char-preview--executing-p t)
+        (goto-char-preview--prev-window (selected-window))
         (window-point (window-point))
         (goto-char-preview--prev-char-pos (point))
         jumped)
@@ -133,8 +138,7 @@ CHAR-POS : Target character position to navigate to."
 
 (defun goto-char-preview--minibuffer-setup ()
   "Locally set up preview hooks for this minibuffer command."
-  (when (memq this-command '(goto-char-preview goto-char-preview-relative))
-    (add-hook 'post-command-hook #'goto-char-preview--do-preview nil t)))
+  (add-hook 'post-command-hook #'goto-char-preview--do-preview nil t))
 
 (add-hook 'minibuffer-setup-hook 'goto-char-preview--minibuffer-setup)
 
