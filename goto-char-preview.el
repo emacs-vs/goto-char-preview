@@ -31,6 +31,8 @@
 
 ;;; Code:
 
+(require 'isearch)
+
 (defgroup goto-char-preview nil
   "Preview char when executing `goto-char` command."
   :prefix "goto-char-preview-"
@@ -88,6 +90,10 @@ CHAR-POS : Target character position to navigate to."
     (when (< (point-max) char-pos)
       (setq char-pos (point-max)))
     (forward-char (1- char-pos))
+    (ignore-errors
+      (let ((search-invisible 'open))
+        (isearch-range-invisible (1- char-pos)
+                                 char-pos)))
     (goto-char-preview--highlight)))
 
 (defun goto-char-preview--do-preview ()
