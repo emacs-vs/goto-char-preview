@@ -1,7 +1,7 @@
 ;; -*- mode: eask; lexical-binding: t -*-
 
 (package "goto-char-preview"
-         "0.1.0"
+         "0.3.0"
          "Preview character when executing `goto-char` command")
 
 (website-url "https://github.com/emacs-vs/goto-char-preview")
@@ -11,7 +11,8 @@
 
 (script "test" "echo \"Error: no test specified\" && exit 1")
 
-(source "melpa")
+(source 'gnu)
+(source 'melpa)
 
 (depends-on "emacs" "24.3")
 
